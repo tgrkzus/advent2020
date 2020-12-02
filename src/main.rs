@@ -4,6 +4,7 @@ use std::env;
 use itertools::Itertools;
 
 mod day1;
+mod day2;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -26,6 +27,9 @@ fn run_problem(problem: u32, file: String) {
     match problem {
         1 => {
             day1::run(&input)
+        },
+        2 => {
+            day2::run(&input)
         },
         _ => {
             println!("Problem {} not found.", problem)
