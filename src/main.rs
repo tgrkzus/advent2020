@@ -5,6 +5,7 @@ use itertools::Itertools;
 
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -30,6 +31,9 @@ fn run_problem(problem: u32, file: String) {
         },
         2 => {
             day2::run(&input)
+        },
+        3 => {
+            day3::run(&input)
         },
         _ => {
             println!("Problem {} not found.", problem)
