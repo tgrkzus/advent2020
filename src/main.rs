@@ -3,11 +3,15 @@ use std::io::{BufReader, BufRead, Lines};
 use std::env;
 use itertools::Itertools;
 use regex::Regex;
+use std::collections::HashMap;
+use std::collections::HashSet;
 
 mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
+mod day6;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -39,6 +43,12 @@ fn run_problem(problem: u32, file: String) {
         },
         4 => {
             day4::run(&input)
+        },
+        5 => {
+            day5::run(&input)
+        },
+        6 => {
+            day6::run(&input)
         },
         _ => {
             println!("Problem {} not found.", problem)
