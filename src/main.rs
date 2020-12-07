@@ -1,3 +1,5 @@
+#![feature(str_split_once)]
+
 use std::fs::File;
 use std::io::{BufReader, BufRead, Lines};
 use std::env;
@@ -12,6 +14,7 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -49,6 +52,9 @@ fn run_problem(problem: u32, file: String) {
         },
         6 => {
             day6::run(&input)
+        },
+        7 => {
+            day7::run(&input)
         },
         _ => {
             println!("Problem {} not found.", problem)
