@@ -7,6 +7,7 @@ use itertools::Itertools;
 use regex::Regex;
 use std::collections::HashMap;
 use std::collections::HashSet;
+use rand::prelude::*;
 
 mod day1;
 mod day2;
@@ -15,6 +16,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -55,6 +57,9 @@ fn run_problem(problem: u32, file: String) {
         },
         7 => {
             day7::run(&input)
+        },
+        8 => {
+            day8::run(&input)
         },
         _ => {
             println!("Problem {} not found.", problem)
