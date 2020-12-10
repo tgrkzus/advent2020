@@ -1,5 +1,4 @@
 use super::*;
-use itertools::__std_iter::FromIterator;
 
 pub fn run(input: &Vec<String>) {
     first(input);

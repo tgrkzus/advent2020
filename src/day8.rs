@@ -1,5 +1,4 @@
 use super::*;
-use itertools::__std_iter::FromIterator;
 
 pub fn run(input: &Vec<String>) {
     first(input);
@@ -27,7 +26,7 @@ fn first(input: &Vec<String>) {
 fn second(input: &Vec<String>) {
     let original_program = generate_program(input);
     let mut program = original_program.clone();
-    let mut result;
+    let result;
     loop {
         if let Some(acc) = try_program(&program) {
             result = acc;
@@ -40,11 +39,11 @@ fn second(input: &Vec<String>) {
                 let rand = rng.gen_range(0, original_program.len());
                 match original_program.get(rand).unwrap() {
                     Operation::Jmp(arg) => {
-                        std::mem::replace(&mut program[rand], Operation::Nop(*arg));
+                        program[rand] = Operation::Nop(*arg);
                         break;
                     },
                     Operation::Nop(arg) => {
-                        std::mem::replace(&mut program[rand], Operation::Jmp(*arg));
+                        program[rand] = Operation::Jmp(*arg);
                         break;
                     },
                     Operation::Acc(_) => continue
@@ -124,7 +123,7 @@ impl Machine {
             Operation::Jmp(arg) => {
                 self.pointer += arg;
             },
-            Operation::Nop(arg) => {
+            Operation::Nop(_) => {
                 self.pointer += 1;
             }
         }
@@ -138,13 +137,5 @@ mod test {
 
     #[test]
     fn test_answers() {
-        assert_eq!(
-            extract_from_line(&"light red bags contain 1 bright white bag, 2 muted yellow bags.".to_owned()),
-            ("light red".to_owned(), vec![Mapping::new("bright white".to_owned(), 1), Mapping::new("muted yellow".to_owned(), 2)])
-        );
-        assert_eq!(
-            extract_from_line(&"bright purple bags contain no other bags.".to_owned()),
-            ("bright purple".to_owned(), vec![])
-        );
     }
 }

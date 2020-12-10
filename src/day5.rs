@@ -49,8 +49,8 @@ fn process_steps(dirs: Vec<Direction>) -> i32 {
     let mut upper = 2_i32.pow(dirs.len() as u32) - 1;
     for dir in dirs {
         match dir {
-            Direction::Upper => lower += ((diff(lower, upper) as f32 / 2.0).ceil() as i32),
-            Direction::Lower => upper -= ((diff(lower, upper) as f32 / 2.0).ceil() as i32),
+            Direction::Upper => lower += (diff(lower, upper) as f32 / 2.0).ceil() as i32,
+            Direction::Lower => upper -= (diff(lower, upper) as f32 / 2.0).ceil() as i32,
         }
     }
     assert_eq!(lower, upper);
